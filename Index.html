@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Press+Start+2P&family=Bebas+Neue&family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math Strike</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="quickModeScreen" class="screen"></div>
+<div id="introScreen" class="screen intro-bg active">
+  <h1 class="judul"><strong>MATH<br> STRIKE</strong></h1>
+    <!-- Tombol Mode -->
+<button class="mode-btn" onclick="goToMode('survival')">Survival Mode </button>
+<button class="mode-btn" onclick="goToMode('quick')">Quick Mode</button>
+<button class="mode-btn" onclick="goToMode('challenge')">Challenge Mode</button>
+
+<!-- Tombol Menu -->
+<button class="menu-btn" onclick="goToSettings()">Pengaturan</button>
+<button class="menu-btn" onclick="goToAbout()">Tentang Kami</button>
+
+</div>
+<div id="setupScreen" class="screen">
+  <h2 id="modeTitle"></h2>
+  <h3>Pengaturan Permainan</h3>
+  <label for="timeInput">Durasi Permainan (detik):</label>
+  <input type="number" id="timeInput" value="30" min="5">
+  <label for="difficulty">Tingkat Kesulitan:</label>
+  <select id="difficulty">
+    <option value="easy">Mudah</option>
+    <option value="normal">Normal</option>
+    <option value="hard">Sulit</option>
+  </select>
+  <label for="operation">Operasi Hitung:</label>
+  <select id="operation">
+    <option value="add">Penjumlahan</option>
+    <option value="sub">Pengurangan</option>
+    <option value="mul">Perkalian</option>
+    <option value="div">Pembagian</option>
+    <option value="mix">Campuran</option>
+  </select>
+  <button onclick="startGame()"style="font-family: 'Orbitron', sans-serif;background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px; transition: background-color 0.3s;">Mulai Permainan</button>
+</div>
+
+<div id="gameScreen" class="screen">
+  <div id="level" style="font-size: 20px; color: white;margin-top: 15px;font-family: 'Orbitron', sans-serif;">Level: 1</div>
+    <h2 id="currentModeLabel" style="text-align: center; margin-bottom: 10px;"></h2>
+  <div id="scoreDisplay">Skor: 0</div>
+  <div id="timerDisplay"></div>
+  <div class="question" id="questionText">Soal...</div>
+  <input type="number" id="answerInput" readonly 
+    placeholder="Jawaban" onkeydown="handleAnswerKey(event)" required>
+  <!--tombol kalkulator -->
+<div id="virtualKeyboard">
+  <div class="key-row">
+    <button onclick="appendNumber(1)">1</button>
+    <button onclick="appendNumber(2)">2</button>
+    <button onclick="appendNumber(3)">3</button>
+  </div>
+  <div class="key-row">
+    <button onclick="appendNumber(4)">4</button>
+    <button onclick="appendNumber(5)">5</button>
+    <button onclick="appendNumber(6)">6</button>
+  </div>
+  <div class="key-row">
+    <button onclick="appendNumber(7)">7</button>
+    <button onclick="appendNumber(8)">8</button>
+    <button onclick="appendNumber(9)">9</button>
+  </div>
+ <div class="key-row">
+    <button onclick="toggleNegative()">−</button>
+    <button onclick="appendNumber(0)">0</button>
+    <button class="del-btn" onclick="deleteLast()">DEL</button>
+  </div>
+  <button class="ok-btn" onclick="checkAnswer()">OK</button>
+     </div>
+ </div>
+<div id="resultScreen" class="screen">
+  <h2 style="font-family: 'Orbitron', sans-serif; font-size:2rem;color: red";>Permainan Selesai!</h2>
+  <p>Skor Tertinggi Kamu:</p>
+  <h2 id="highScoreDisplay"></h2>
+  <p>Skor Akhir Kamu:</p>
+  <h1 id="finalScore"></h1>
+  <button onclick="location.reload()"style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px; transition: background-color 0.3s;font-family: 'Orbitron', sans-serif;">Main Lagi</button>
+</div>
+<div id="settingsScreen" class="screen">
+  <h2 style="font-family: 'Orbitron', sans-serif";>Pengaturan</h2>
+  
+  <label for="effectVolume">Volume Efek: <span id="effectVolumeValue">100%</span></label>
+<input type="range" id="effectVolume" min="0" max="1" step="0.01" value="0.5">
+  <label for="musicVolume">Volume Musik:<span id="musicVolumeValue">100%</span></label>
+  <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="0.5">
+  
+
+  <button onclick="backToIntro()" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px; transition: background-color 0.3sfont-family: 'Orbitron', sans-serif;";>Kembali</button>
+</div>
+<div id="aboutScreen" class="screen">
+  <h2>Tentang Kami</h2>
+<!-- Tambahan foto dan deskripsi -->
+  <div style="text-align: center;">
+    <img src="fotoku.jpg" alt="Foto Dedi Suryanto" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 5px;">
+  </div>
+  <div style="padding: 0 5px; text-align: center;">
+    <p><strong>Dedi Suryanto</strong> lahir di Langsa pada tanggal 10 Juli 1992 adalah seorang guru di MIN 31 Aceh Timur yang memiliki minat dalam pengembangan media pembelajaran berbasis teknologi. Ia percaya bahwa matematika bisa menjadi menyenangkan dengan pendekatan yang kreatif dan interaktif.</p>
+
+    <p><strong>Math Strike</strong> dibuat sebagai alat bantu untuk meningkatkan kemampuan berhitung siswa melalui permainan. Aplikasi ini dirancang untuk mendorong semangat belajar, menumbuhkan daya saing sehat, dan menjadikan matematika sebagai mata pelajaran favorit.</p>
+  </div>
+<p style="color:white;font-size:12px;">Versi: 1.1 | Tahun: 2025 | By Dedi Suryanto, S.Pd</p>
+<button onclick="backToIntro()" style="background-color: blue; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px; transition: background-color 0.3s;font-family: 'Orbitron', sans-serif;">Kembali</button>
+<audio id="beepSound" src="beep.mp3" preload="auto"></audio>
+<audio id="correctSound" src="correct.mp3" preload="auto"></audio>
+<audio id="wrongSound" src="incorrect.mp3" preload="auto"></audio>
+<audio id="bgMusic" src="intro.mp3" loop autoplay muted></audio>
+<script src="script.js"></script>
+<footer id="footer">
+  <p>@ 2025 Math Strike By Dedi Suryanto</p>
+</footer>
+
+
+</body>
+</html>

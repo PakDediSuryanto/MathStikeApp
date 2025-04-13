@@ -1,0 +1,285 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color:white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+.intro-bg{ background: url('bg.png') no-repeat center center;
+background-size: cover;
+background-attachment: fixed;
+  }
+.screen {
+  width: 100vw;
+  height: 100vh;
+  background: url('bg.png')no-repeat center center;
+  background-size: cover;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.active { display: flex; }
+select, button, input {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+}
+.question {
+  font-size: 2rem;
+  background-color: white;
+  color:Blue;
+  margin: 0.5rem 0;
+  border: 2px solid white;
+  outline: 4px solid orange;
+  outline-offset: 2px;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+.judul {
+  color: aqua;
+  font-weight: 1000;
+  font-size: 5rem;
+  text-align: center;
+  line-height:1;
+  font-family: 'Russo One', sans-serif;
+
+  /* Outline (stroke) */
+  -webkit-text-stroke: 4px black; /* warna outline */
+  text-shadow:none;
+  letter-spacing:3px ;
+}
+/* Tombol mode permainan (hijau) */
+.mode-btn {
+  background-color: #00b050; /* hijau terang */
+  box-shadow: 0 4px #007a38;
+  font-family: 'Orbitron', sans-serif;
+}
+}
+
+.mode-btn:hover {
+  background-color: #33c474;
+  box-shadow: 0 2px #005c2c;
+}
+
+.mode-btn:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+/* Tombol menu (biru) */
+.menu-btn {
+  background-color: red; /* biru */
+  box-shadow: 0 4px #005bb5;
+ font-family: 'Orbitron', sans-serif;
+ color: white;
+}
+}
+
+.menu-btn:hover {
+  background-color: #339eff;
+  box-shadow: 0 2px #004c99;
+}
+
+.menu-btn:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
+/* Tombol Kembali di Pengaturan */
+#backButton {
+    background-color: #4CAF50; /* Hijau */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+/* Mengubah font dan warna untuk h2, h3, dan label */
+p,h3,h2,label,scoreDisplay,timerDisplay{
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  letter-spacing: 1px;
+  background-color: aqua transparent;
+  font-weight: bold;
+}
+#backButton:hover {
+    background-color: #45a049;
+}
+
+/* Tombol Mulai di Pengaturan */
+#startButton {
+    background-color: #FF5722; /* Oranye */
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#startButton:hover {
+    background-color: #e64a19;
+}
+#scoreDisplay {
+  color: yellow;
+  font-weight: bold;
+  font-size: 2rem;
+}
+#timerDisplay {
+  font-weight: bold;
+  font-size: 2rem;
+}
+#answerInput {
+  text-align: center;
+}
+
+#timerDisplay.warning {
+  color: red;
+  font-size: 2rem;
+  animation: blink 0.8s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.score-animate {
+  animation: pop 0.3s ease-in-out;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 0.9rem;
+}
+input[type="range"] {
+  -webkit-appearance: none; /* Hilangkan gaya default */
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #4caf50 50%, #ccc 50%);
+  outline: none;
+  transition: background 0.3s ease-in-out;
+}
+/* Gaya track-nya */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 5px;
+}
+
+input[type=range] {
+  height: 8px;
+  border-radius: 5px;
+  background: #ccc;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type=range] {
+  width: 100%;
+  max-width: 300px;  /* Biar tidak terlalu panjang di HP */
+  box-sizing: border-box;
+  margin: 10px auto;
+  display: block;
+  height: 6px;
+  background: #ccc;
+  border-radius: 5px;
+  appearance: none;
+  outline: none;
+}
+
+/* Untuk gaya track dan thumb (penyesuaian di browser Chrome/Edge/Opera) */
+input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  width: 0px;
+  height: 0px;
+  background: #4caf50;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0,0,0,0.4);
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 0px;
+  height: 0px;
+  background: #4caf50;
+  border-radius: 50%;
+  cursor: pointer;
+}
+/*keyboard */
+#virtualKeyboard {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+#virtualKeyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.key-row {
+  display: flex;
+  gap: 15px;
+}
+
+#virtualKeyboard button {
+  width: 60px;
+  height: 50px;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  border: none;
+  background-color: gray;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  box-shadow: 0 3px #222;
+  cursor: pointer;
+}
+
+#virtualKeyboard button:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+/* KHUSUS OK */
+#virtualKeyboard button.ok-btn {
+  width: 180px;
+  height: 50px;
+  font-size: 1.2rem;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 4px #2e7d32;
+}
+
+/* KHUSUS DEL */
+#virtualKeyboard button.del-btn {
+  font-size: 1rem;
+  text-align: center;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px black;
+}
